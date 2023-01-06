@@ -21,6 +21,9 @@
             border: 3px solid green; /* Параметры рамки */
             box-shadow: 0 0 7px #666; /* Параметры тени */
             size
+        }
+        .fl {
+            filter: hue-rotate(0);
             }
         .avatar {
             border-radius: 50% !important;
@@ -29,23 +32,38 @@
             /* box-shadow: 0 0 0 1px var(--color-avatar-border); */
             /* width: 260px;
             height: 260px; */
-            display: inline-block;
+            /* display: inline-block;
             flex-shrink: 0;
             line-height: 1;
-            overflow: hidden;
+            overflow: hidden; */
             vertical-align: middle;
-            margin-left: 30px;
-            margin-top: 30px;
-}
-
+            margin-left: 100px;
+            margin-top: 50px;
+            border: 1;
+        }
+        canvas {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
     </style>
 </head>
 <body>
-<div>
+<canvas id="canvas"></canvas>
+<script src="index.js" type="module"></script>
+<div style="display: flex;">
     <img style="height:auto;" alt="" width="230" height="230"
     class="avatar avatar-user width-full border color-bg-default"
     src="./profile_photo.png">
-    <h1>Заголовок первого уровня</h1>
+    <div style="margin-left: 50px; margin-top: 50px; font-family: Verdana;">
+        <h1 style="font-family: Verdana">Зухра Хубиева</h1>
+        <a>ML Engineer</a>
+        <h2>Проекты по DS и ML:</h2>
+        <a href="https://github.com/shuygena/linear_regression">ft_linear_regression</a>
+    </div>
+</div>
+<div style="margin-left: 100px; margin-top: 30px; font-family: Verdana;">
+    <h3> Образование:</h3>
 </div>
 </body>
 </html>
