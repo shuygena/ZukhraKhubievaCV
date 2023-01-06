@@ -16,14 +16,9 @@
             max-height: 100%;
             max-width: 100%;
         }
-        .fl {
-            filter: hue-rotate(0);
-            }
         .avatar {
             border-radius: 50% !important;
             vertical-align: middle;
-            margin-left: 100px;
-            margin-top: 50px;
             border: 1;
         }
         canvas {
@@ -40,8 +35,7 @@
 <script src="js/index.js" type="module"></script>
 <div style="display: flex;">
     <div style="display: inline; margin: 50px 0 0 100px; position: relative;">
-        <img style="height:auto;" alt="" width="230" height="230"
-        class="avatar avatar-user width-full border color-bg-default"
+        <img style="height:auto;" alt="" width="230" height="230"; class="avatar"
         src="./profile_photo.png">
         <canvas id="canvas"></canvas>
     </div>
