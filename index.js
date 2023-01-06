@@ -1,4 +1,4 @@
-class Renderer {
+export default class Renderer {
     constructor(opt) {
     }
 
@@ -13,7 +13,7 @@ class Renderer {
                 const x = globalZero.x + spark.x;
                 const y = globalZero.y + spark.y;
 
-                const scale = .5;
+                const scale = 2;
                 const sizeMax = 5 * scale;
                 const sizeMin = 3 * scale;
                 const offset = scale;
@@ -25,12 +25,14 @@ class Renderer {
 
 
                 ctx.beginPath();
-                ctx.moveTo(x + sizeMin, y);
+                ctx.translate(x, y)
+                ctx.rotate(spark._angle)
+                ctx.moveTo(sizeMin, 0);
                 for (let i = 0; i < 6; i++) {
                     const currentAngleMax = sectorAngle * i + sectorAngle / 2;
                     const currentAngleMin = sectorAngle * i + sectorAngle;
-                    ctx.lineTo(Math.cos(currentAngleMax) * sizeMax + x, Math.sin(currentAngleMax) * sizeMax + y);
-                    ctx.lineTo(Math.cos(currentAngleMin) * sizeMin + x, Math.sin(currentAngleMin) * sizeMin + y);
+                    ctx.lineTo(Math.cos(currentAngleMax) * sizeMax, Math.sin(currentAngleMax) * sizeMax);
+                    ctx.lineTo(Math.cos(currentAngleMin) * sizeMin, Math.sin(currentAngleMin) * sizeMin);
                 }
                 ctx.fill();
 
@@ -42,35 +44,36 @@ class Renderer {
                     const intermediateAngle = currentAngle + sectorAngle / 2;
 
                     ctx.moveTo(
-                        x + (sizeMin + offset) * Math.cos(currentAngle),
-                        y + (sizeMin + offset) * Math.sin(currentAngle)
+                        (sizeMin + offset) * Math.cos(currentAngle),
+                        (sizeMin + offset) * Math.sin(currentAngle)
                     );
 
                     ctx.lineTo(
-                        x + (sizeMin + offset + smallStripSize) * Math.cos(currentAngle),
-                        y + (sizeMin + offset + smallStripSize) * Math.sin(currentAngle)
+                        (sizeMin + offset + smallStripSize) * Math.cos(currentAngle),
+                        (sizeMin + offset + smallStripSize) * Math.sin(currentAngle)
                     );
 
                     ctx.moveTo(
-                        x + (sizeMin + offset + smallStripSize + margin) * Math.cos(currentAngle),
-                        y + (sizeMin + offset + smallStripSize + margin) * Math.sin(currentAngle)
+                        (sizeMin + offset + smallStripSize + margin) * Math.cos(currentAngle),
+                        (sizeMin + offset + smallStripSize + margin) * Math.sin(currentAngle)
                     );
 
                     ctx.lineTo(
-                        x + (sizeMin + offset + smallStripSize * 2 + margin) * Math.cos(currentAngle),
-                        y + (sizeMin + offset + smallStripSize * 2 + margin) * Math.sin(currentAngle)
+                        (sizeMin + offset + smallStripSize * 2 + margin) * Math.cos(currentAngle),
+                        (sizeMin + offset + smallStripSize * 2 + margin) * Math.sin(currentAngle)
                     );
 
                     ctx.moveTo(
-                        x + (sizeMax + offset) * Math.cos(intermediateAngle),
-                        y + (sizeMin + offset) * Math.sin(intermediateAngle)
+                        (sizeMax + offset) * Math.cos(intermediateAngle),
+                        (sizeMin + offset) * Math.sin(intermediateAngle)
                     );
 
                     ctx.lineTo(
-                        x + (sizeMax + offset + bigStripSize) * Math.cos(intermediateAngle),
-                        y + (sizeMin + offset + bigStripSize) * Math.sin(intermediateAngle)
+                        (sizeMax + offset + bigStripSize) * Math.cos(intermediateAngle),
+                        (sizeMin + offset + bigStripSize) * Math.sin(intermediateAngle)
                     );
                 }
+                ctx.rotate(-spark._angle)
                 ctx.stroke();
 
                 ctx.restore();
@@ -78,6 +81,7 @@ class Renderer {
         })
     }
 }
+
 const colors = [
     { 'r': 255, 'g': 255, 'b': 255 },
     { 'r': 239, 'g': 209, 'b': 97 },
