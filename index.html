@@ -16,26 +16,11 @@
             max-height: 100%;
             max-width: 100%;
         }
-        .photo_round {
-            border-radius: 100px; /* Радиус скругления */
-            border: 3px solid green; /* Параметры рамки */
-            box-shadow: 0 0 7px #666; /* Параметры тени */
-            size
-        }
         .fl {
             filter: hue-rotate(0);
             }
         .avatar {
             border-radius: 50% !important;
-            /* background-color: var(--color-avatar-bg); */
-            /* border-radius: var(--primer-borderRadius-medium, 6px); */
-            /* box-shadow: 0 0 0 1px var(--color-avatar-border); */
-            /* width: 260px;
-            height: 260px; */
-            /* display: inline-block;
-            flex-shrink: 0;
-            line-height: 1;
-            overflow: hidden; */
             vertical-align: middle;
             margin-left: 100px;
             margin-top: 50px;
@@ -45,16 +30,21 @@
         width: 100%;
         height: 100%;
         display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
     </style>
 </head>
 <body>
-<canvas id="canvas"></canvas>
 <script src="js/index.js" type="module"></script>
 <div style="display: flex;">
-    <img style="height:auto;" alt="" width="230" height="230"
-    class="avatar avatar-user width-full border color-bg-default"
-    src="./profile_photo.png">
+    <div style="display: inline; margin: 50px 0 0 100px; position: relative;">
+        <img style="height:auto;" alt="" width="230" height="230"
+        class="avatar avatar-user width-full border color-bg-default"
+        src="./profile_photo.png">
+        <canvas id="canvas"></canvas>
+    </div>
     <div style="margin-left: 50px; margin-top: 50px; font-family: Verdana;">
         <h1 style="font-family: Verdana">Зухра Хубиева</h1>
         <a>ML Engineer</a>
