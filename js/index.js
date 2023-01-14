@@ -12,7 +12,7 @@ let isStop = true;
 
 window.addEventListener('click', toggleActivity)
 
-eyes.push(new Eye({ x: 90, y: 95, maxY: 700 }))
+eyes.push(new Eye({ x: 85, y: 95, maxY: 700 }))
 eyes.push(new Eye({ x: 140, y: 95, maxY: 700 }))
 
 let lastTime = Date.now()
