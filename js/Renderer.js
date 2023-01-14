@@ -13,7 +13,7 @@ export default class Renderer {
                 const x = globalZero.x + spark.x;
                 const y = globalZero.y + spark.y;
 
-                const scale = 2;
+                const scale = 1;
                 const sizeMax = 5 * scale;
                 const sizeMin = 3 * scale;
                 const offset = scale;
