@@ -1,5 +1,7 @@
 import {getColor, Point, Vector2} from "./helpers.js";
 
+const timeScale = 0.01
+
 export default class Spark {
     constructor() {
         this._coord = new Point();
@@ -27,11 +29,11 @@ export default class Spark {
     }
 
     _applyVelocity(dt) {
-        this._coord.applyDiff(this.velocity, dt / 100)
+        this._coord.applyDiff(this.velocity, dt / (1000 * timeScale))
     }
 
     _applyAcc(dt) {
-        this.velocity.applyDiff(new Vector2(0, 10), dt / 100)
+        this.velocity.applyDiff(new Vector2(0, 10), dt / (1000 * timeScale))
     }
 
     _applyRotation(dt) {
