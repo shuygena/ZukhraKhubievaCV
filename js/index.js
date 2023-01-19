@@ -25,7 +25,7 @@ function update() {
     const dt = Date.now() - lastTime;
     lastTime = Date.now();
 
-    if (isActive) eyes.forEach(eye => eye.spawnSparks(1, 4))
+    if (isActive) eyes.forEach(eye => eye.spawnSparks(1, 3))
     eyes.forEach(eye => eye.nextTick(dt))
     renderer.render(ctx, eyes)
 
