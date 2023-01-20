@@ -1,6 +1,6 @@
 import {getColor, Point, Vector2} from "./helpers.js";
 
-const timeScale = 0.01
+const timeScale = 0.05
 
 export default class Spark {
     constructor() {
