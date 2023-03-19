@@ -10,16 +10,17 @@
         html, body {
             height: 100%;
             margin: 0;
-            background-color: #f6ecda ;
+            background-color: #ede0c9;
+            font-family: Verdana;
         }
-        img {
-            max-height: 100%;
-            max-width: 100%;
+        .app {
+            padding: 20px;
+            position: relative;
+            min-height: 100%;
+            box-sizing: border-box;
         }
         .avatar {
-            border-radius: 50% !important;
-            vertical-align: middle;
-            border: 1;
+            box-sizing: border-box;
         }
         canvas {
         width: 100%;
@@ -28,26 +29,119 @@
         position: absolute;
         top: 0;
         left: 0;
+            pointer-events: none;
     }
+
+        .image-holder {
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: url('./magic-wand.png') 4 1, pointer;
+        }
+
+        .fact {
+            display: flex;
+            justify-content: flex-start;
+            gap: 50px;
+            padding: 0 10px;
+        }
+
+        .fact__text {
+            border: 1px solid black;
+            padding: 20px;
+            min-height: 50px;
+            border-radius: 20px;
+            width: 100%;
+            background-color: #faf5ea;
+            max-width: 850px;
+        }
+
+        .fact__button {
+            user-select: none;
+            border-radius: 20px;
+            box-sizing: border-box;
+            background-color: #faf5ea;
+            width: 300px;
+            flex-shrink: 0;
+            font-size: 20px;
+            cursor: pointer;
+            border: 1px solid black;
+            transition: background-color .3s, color .3s;
+        }
+
+        .fact__button:hover  {
+            background-color: brown;
+            color: white;
+        }
+
+        .canvas-holder {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .hint {
+            position: absolute;
+            background-color: #3d3d3d;
+            z-index: 10;
+            padding: 10px 20px;
+            border-radius: 15px;
+            left: -90px;
+            top: -50px;
+            white-space: nowrap;
+            color: white;
+            opacity: 0;
+            transition: opacity .3s;
+        }
+
+        .avatar-holder:hover .hint {
+            opacity: 1;
+        }
+        .avatar-holder {
+            display: flex;
+        }
     </style>
 </head>
 <body>
 <script src="js/index.js" type="module"></script>
-<div style="display: flex;">
-    <div style="display: inline; margin: 50px 0 0 100px; position: relative;">
-        <img style="height:auto;" alt="" width="230" height="230"; class="avatar"
-        src="./profile_photo.png">
+<div class="app">
+    <div class="canvas-holder">
         <canvas id="canvas"></canvas>
     </div>
-    <div style="margin-left: 50px; margin-top: 50px; font-family: Verdana;">
-        <h1 style="font-family: Verdana">Зухра Хубиева</h1>
-        <a>ML Engineer</a>
-        <h2>Проекты по DS и ML:</h2>
-        <a href="https://github.com/shuygena/linear_regression">ft_linear_regression</a>
+    <div style="display: flex;">
+        <div class="avatar-holder">
+            <div style="display: inline; margin: 50px 0 0 100px; position: relative;">
+                <div class="hint">
+                    Так искрятся мои глаза, когда я программирую!)
+                </div>
+                <div class="image-holder">
+                    <img alt="avatar" width="230" class="avatar" src="./profile_photo.png">
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 50px; margin-top: 50px;">
+            <h1 style="">Зухра Хубиева</h1>
+            <a>ML Engineer</a>
+            <h2>Проекты по DS и ML:</h2>
+            <a href="https://github.com/shuygena/linear_regression">ft_linear_regression</a>
+        </div>
     </div>
-</div>
-<div style="margin-left: 100px; margin-top: 30px; font-family: Verdana;">
-    <h3> Образование:</h3>
+    <div style="margin-left: 100px; margin-top: 30px; font-family: Verdana;">
+        <h3> Образование:</h3>
+    </div>
+
+    <div class="fact">
+        <button class="fact__button">Новый факт</button>
+        <div class="fact__text"></div>
+    </div>
 </div>
 </body>
 </html>

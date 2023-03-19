@@ -88,3 +88,7 @@ export function getColor(progress) {
         b: getFromRange(startColor.b, endColor.b, localProgress),
     })
 }
+
+export function getRandomInt (n) {
+    return Math.floor(Math.random() * n)
+}

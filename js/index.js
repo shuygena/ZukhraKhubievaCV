@@ -1,19 +1,27 @@
 import Renderer from "./Renderer.js";
 import {updateCanvasSize} from "./helpers.js";
 import Eye from "./Eye.js";
+import getRandomFact from './factsGenerator.js'
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const renderer = new Renderer();
 const eyes = [];
 
+const avatar = document.querySelector('.avatar')
+const factTextBlock = document.querySelector('.fact__text');
+const factButton = document.querySelector('.fact__button');
+
 let isActive = false;
 let isStop = true;
 
-window.addEventListener('click', toggleActivity)
+avatar.addEventListener('mouseenter', startActivity)
+avatar.addEventListener('mouseleave', stopActivity)
+factButton.addEventListener('click', setNewFact)
+setNewFact()
 
-eyes.push(new Eye({ x: 85, y: 95, maxY: 700 }))
-eyes.push(new Eye({ x: 140, y: 95, maxY: 700 }))
+eyes.push(new Eye({ x: 240, y: 160, maxY: window.innerHeight }))
+eyes.push(new Eye({ x: 195, y: 160, maxY: window.innerHeight }))
 
 let lastTime = Date.now()
 
@@ -45,9 +53,21 @@ function stop() {
     isStop = true;
 }
 
-function toggleActivity() {
-    isActive = !isActive
+function toggleActivity(activity) {
+    isActive = activity
     if (isActive) {
         start()
     }
+}
+
+function startActivity() {
+    toggleActivity(true)
+}
+
+function stopActivity() {
+    toggleActivity(false)
+}
+
+function setNewFact() {
+    factTextBlock.innerText = getRandomFact()
 }
